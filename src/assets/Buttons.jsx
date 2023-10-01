@@ -1,6 +1,6 @@
 import { VscTriangleRight, VscTriangleLeft } from "react-icons/vsc";
 
-const Buttons = ({ nextSlide, prevSlide, resetAnimation }) => {
+const Buttons = ({ nextSlide, prevSlide }) => {
   return (
     <>
       <button

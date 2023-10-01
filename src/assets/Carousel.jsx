@@ -1,9 +1,6 @@
-// import { list, longList } from "..data";
 import { FaQuoteRight } from "react-icons/fa";
 import { useEffect, useState } from "react";
-import { list, longList } from "../data";
-import { VscTriangleRight, VscTriangleLeft } from "react-icons/vsc";
-// import Loading from "/Loading";
+import { longList } from "../data";
 import Buttons from "./Buttons";
 import Loading from "./Loading";
 import "../index.css";
@@ -11,7 +8,7 @@ import Dots from "./Dots";
 
 const Carousel = () => {
   const [animate, setAnimate] = useState(true);
-  const [people, setPeople] = useState(list);
+  const [people, setPeople] = useState(longList);
   const [activeSlide, setActiveSlide] = useState(0);
 
   function nextSlide() {
@@ -20,7 +17,7 @@ const Carousel = () => {
     } else {
       setActiveSlide(0);
     }
-    resetAnimation();
+    setAnimate(false);
   }
 
   const prevSlide = () => {
@@ -29,29 +26,26 @@ const Carousel = () => {
     } else {
       setActiveSlide(people.length - 1);
     }
-    resetAnimation();
+    setAnimate(false);
   };
 
   const dotEvent = (index) => {
     setActiveSlide(index);
-    resetAnimation();
+    setAnimate(false);
   };
 
   useEffect(() => {
+    // when the slide moves to the next one, the animate value will be set to false, this will set it back on, reseting the countdown animation
     setAnimate(true);
+
     let sliderID = setInterval(() => {
       nextSlide();
-      resetAnimation();
-    }, 4000);
+    }, 5000);
+
     return () => {
       clearInterval(sliderID);
     };
-  }, [nextSlide, dotEvent]);
-
-  const resetAnimation = () => {
-    setAnimate(false);
-    // sets animations off, then useeffect will set it back on, resetting the animation
-  };
+  }, [activeSlide, dotEvent]);
 
   return (
     <>
@@ -79,11 +73,7 @@ const Carousel = () => {
         );
       })}
       <Loading animate={animate} />
-      <Buttons
-        nextSlide={nextSlide}
-        prevSlide={prevSlide}
-        resetAnimation={resetAnimation}
-      />
+      <Buttons nextSlide={nextSlide} prevSlide={prevSlide} />
       <Dots people={people} dotEvent={dotEvent} activeSlide={activeSlide} />
     </>
   );

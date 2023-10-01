@@ -1,7 +1,7 @@
 const Dots = ({ people, dotEvent, activeSlide }) => {
   return (
     <div className="dots-container">
-      {people.map((person, index) => {
+      {people.map((_, index) => {
         const activeDot = index == activeSlide;
         return (
           <a
