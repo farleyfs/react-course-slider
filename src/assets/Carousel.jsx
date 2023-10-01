@@ -1,6 +1,6 @@
 import { FaQuoteRight } from "react-icons/fa";
 import { useEffect, useState } from "react";
-import { longList } from "../data";
+import { list, longList } from "../data";
 import Buttons from "./Buttons";
 import Loading from "./Loading";
 import "../index.css";

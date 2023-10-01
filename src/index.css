@@ -261,7 +261,7 @@ ul {
   width: 80vw;
   max-width: 800px;
   position: relative;
-  height: 450px;
+  height: 500px;
   overflow: hidden;
 }
 .slide {
@@ -342,6 +342,12 @@ ul {
   }
 }
 
+/* @media screen and (max-width: 400) {
+  .dots-container {
+    margin-top: 80%;
+  }
+} */
+
 .next-slide {
   transform: translateX(100%);
   opacity: 0;
@@ -384,9 +390,10 @@ ul {
 }
 
 .dots-container {
-  margin-top: 49%;
   display: flex;
-  justify-content: center;
+  position: absolute;
+  bottom: 7%;
+  width: 100%;
   color: var(--grey-600);
 }
 
@@ -396,7 +403,7 @@ ul {
   align-items: center;
   text-align: center;
   cursor: default;
-  margin: 1.5rem;
+  margin: auto;
   background: none;
   border: none;
   transform: scale(3);
